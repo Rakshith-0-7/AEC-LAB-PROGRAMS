@@ -1,0 +1,12 @@
+no = (input("\nenter binary no.\n"))
+no1 = (input("\nenter octal no.\n"))
+def btod(no):
+    return int(no,2)
+def otoh(no1):
+    dec = int(no1,8)
+    return hex(dec)
+
+res = btod(no)
+print(res)
+res1 = otoh(no1)
+print(res1)

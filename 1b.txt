@@ -1,0 +1,9 @@
+no = int(input("\nenter the no.\n"))
+str_val = str(no)
+if str_val == str_val[::-1]:
+    print("\npalindrome\n")
+else:
+    print("\nnot plindrome\n")
+for i in range(10):
+        if str_val.count(str(i))>0:
+            print(i,":",str_val.count(str(i)))

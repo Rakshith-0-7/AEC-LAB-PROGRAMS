@@ -1,0 +1,54 @@
+Write a Python program to Demonstrate how to Draw a Scatter Plot using Matplotlib. 
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+x = np.random.rand(30) 
+y = np.random.rand(30) 
+colors = np.random.rand(30) 
+sizes = 100 * np.random.rand(30) 
+
+plt.figure(figsize=(15, 10)) 
+
+plt.subplot(2, 3, 1) 
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.5) 
+plt.title('Scatter Plot') 
+
+plt.subplot(2, 3, 2) 
+categories = np.random.randint(0, 3, 30) 
+plt.scatter(x, y, c=categories, cmap='viridis', s=sizes, alpha=0.5) 
+plt.colorbar() 
+plt.title('Colored Scatter Plot') 
+
+plt.subplot(2, 3, 3) 
+markers = ['o', 's', '^'] 
+for i, marker in enumerate(markers): 
+    subset_x = x[categories == i] 
+    subset_y = y[categories == i] 
+    plt.scatter(subset_x, subset_y, marker=marker, label=f'Category {i}', 
+alpha=0.7) 
+plt.legend() 
+plt.title('Scatter Plot with Markers') 
+
+plt.subplot(2, 3, 4) 
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, marker='o', 
+edgecolors='black', linewidths=2) 
+plt.title('Bubble Plot') 
+
+from mpl_toolkits.mplot3d import Axes3D 
+
+ax = plt.subplot(2, 3, 5, projection='3d') 
+z = 10 * np.random.rand(30) 
+ax.scatter(x, y, z, c=colors, s=sizes, alpha=0.5) 
+ax.set_xlabel('X Label') 
+ax.set_ylabel('Y Label') 
+
+ax.set_zlabel('Z Label') 
+plt.title('3D Scatter Plot') 
+
+plt.subplot(2, 3, 6) 
+plt.hexbin(x, y, gridsize=15, cmap='Blues') 
+plt.colorbar() 
+plt.title('Hexbin Plot') 
+
+plt.tight_layout() 
+plt.show()

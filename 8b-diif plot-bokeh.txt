@@ -1,0 +1,40 @@
+Write a Python program for plotting different types of plots using Bokeh. 
+from bokeh.plotting import figure, output_notebook, show 
+from bokeh.io import push_notebook 
+from bokeh.layouts import gridplot 
+import numpy as np 
+
+output_notebook() 
+
+x_values = np.linspace(0, 4*np.pi, 100) 
+y_values = np.sin(x_values) 
+
+line_plot = figure(title="Line Plot", x_axis_label="X-axis", 
+y_axis_label="Y-axis") 
+line_plot.line(x_values, y_values, line_width=2) 
+
+x_values_scatter = np.random.rand(50) 
+y_values_scatter = np.random.rand(50) 
+
+scatter_plot = figure(title="Scatter Plot", x_axis_label="X-axis", 
+y_axis_label="Y-axis") 
+scatter_plot.circle(x_values_scatter, y_values_scatter, size=10, 
+color="navy", alpha=0.5) 
+
+categories = ['A', 'B', 'C', 'D', 'E'] 
+values = [4, 7, 1, 8, 5] 
+
+bar_plot = figure(title="Bar Plot", x_axis_label="Categories", 
+y_axis_label="Values", x_range=categories) 
+bar_plot.vbar(x=categories, top=values, width=0.5, color="firebrick") 
+
+grid = gridplot([[line_plot, scatter_plot, bar_plot]]) 
+
+grid_handle = show(grid, notebook_handle=True) 
+
+x_values_updated = np.linspace(0, 4*np.pi, 100) 
+y_values_updated = np.cos(x_values_updated) 
+
+line_plot.line(x_values_updated, y_values_updated, line_width=2) 
+push_notebook(handle=grid_handle) 
+

@@ -1,0 +1,28 @@
+
+marks accepted from the user. 
+def calculate_average(score1, score2): 
+    return (score1 + score2) / 2 
+ 
+def main(): 
+    # Get input from the user for the three test scores 
+    test1 = float(input("Enter the score for test 1: ")) 
+    test2 = float(input("Enter the score for test 2: ")) 
+    test3 = float(input("Enter the score for test 3: ")) 
+ 
+    # Calculate averages for pairs of tests 
+    avg_12 = calculate_average(test1, test2) 
+    avg_23 = calculate_average(test2, test3) 
+    avg_13 = calculate_average(test1, test3) 
+ 
+    # Determine the best average 
+    best_average = max(avg_12, avg_23, avg_13) 
+ 
+    # Display the results 
+    print("\nAverage for Test 1 and Test 2:", avg_12) 
+    print("Average for Test 2 and Test 3:", avg_23) 
+    print("Average for Test 1 and Test 3:", avg_13) 
+ 
+    print("\nThe best average is:", best_average) 
+ 
+if __name__ == "__main__": 
+    main()

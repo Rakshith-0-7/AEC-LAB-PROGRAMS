@@ -1,0 +1,50 @@
+Write a Python program to draw Time Series using Plotly Libraries 
+
+import plotly.express as px 
+import pandas as pd 
+import warnings 
+warnings.simplefilter(action='ignore', category=FutureWarning) 
+
+data = { 
+'Date': pd.date_range(start='2024-01-01', periods=10, freq='D'), 
+'Value': [3, 5, 8, 12, 6, 9, 11, 14, 18, 20] 
+} 
+df = pd.DataFrame(data) 
+
+fig = px.line(df, x='Date', y='Value', title='Time Series Plot', 
+labels={'Value': 'Y-Axis Label'}) 
+
+fig.show()
+
+
+
+
+
+
+Write a Python program to draw Time Series using Plotly Libraries to demonstrate freedom 
+fight of India 
+import plotly.express as px 
+import pandas as pd 
+
+related to the freedom fight) 
+data = { 
+    'Year': [1857, 1900, 1915, 1920, 1930, 1942, 1947], 
+    'Event': ['First War of Independence', 'Partition of Bengal', 'Ghadar 
+Movement', 'Non-Cooperation Movement', 'Civil Disobedience Movement', 
+'Quit India Movement', 'Independence'], 
+    'Description': ['The first large-scale rebellion against British 
+rule.','Bengal was divided, leading to protests.', 'Revolutionary movement 
+against British imperialism.', 'Led by Gandhi, urging non-violent 
+resistance.', 'Protests against salt tax and British monopoly.', 'Demand 
+for British withdrawal from India.', 'India gained independence on August 
+15, 1947.'] 
+} 
+df = pd.DataFrame(data) 
+
+fig = px.line(df, x='Year', y=df.index, text='Event', title='Freedom Fight 
+of India', 
+              labels={'Year': 'Year', 'Event': 'Event'}, 
+              hover_data=['Description']) 
+
+fig.update_traces(mode='markers+lines+text') 
+fig.show()

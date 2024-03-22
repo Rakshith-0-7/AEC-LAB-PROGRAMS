@@ -1,0 +1,44 @@
+Write a Python program to draw 3D Plots using Plotly Libraries. 
+import plotly.graph_objects as go 
+from plotly.subplots import make_subplots 
+import numpy as np 
+
+x = np.linspace(-5, 5, 100) 
+y = np.linspace(-5, 5, 100) 
+x, y = np.meshgrid(x, y) 
+
+def surface_plot(): 
+    z = np.exp(-(x**2 + y**2) / 10) * np.sin(x) * np.cos(y) 
+    fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)]) 
+    fig.update_layout(scene=dict(zaxis=dict(range=[0, 1.5]))) 
+    return fig 
+
+def scatter_3d(): 
+    z = np.exp(-(x**2 + y**2) / 10) * np.sin(x) * np.cos(y) 
+    fig = go.Figure(data=[go.Scatter3d(x=x.flatten(), y=y.flatten(), 
+z=z.flatten(), mode='markers')]) 
+    return fig 
+
+def line_3d(): 
+    z = np.exp(-(x**2 + y**2) / 10) * np.sin(x) * np.cos(y) 
+    fig = go.Figure(data=[go.Scatter3d(x=x.flatten(), y=y.flatten(), 
+z=z.flatten(), mode='lines')]) 
+    return fig 
+
+def surface_contour(): 
+    z = np.exp(-(x**2 + y**2) / 10) * np.sin(x) * np.cos(y) 
+    fig = go.Figure(data=[go.Contour(z=z, x=x, y=y)]) 
+    fig.update_layout(scene=dict(zaxis=dict(range=[0, 1.5]))) 
+    return fig 
+
+fig = make_subplots(rows=2, cols=2, subplot_titles=['Surface Plot', 
+'Scatter 3D', 'Line 3D', 'Surface Contour'], specs=[[{'type': 'surface'}, 
+{'type': 'scatter3d'}], [{'type': 'scatter3d'}, {'type': 'contour'}]]) 
+
+fig.add_trace(surface_plot().data[0], row=1, col=1) 
+fig.add_trace(scatter_3d().data[0], row=1, col=2) 
+fig.add_trace(line_3d().data[0], row=2, col=1) 
+fig.add_trace(surface_contour().data[0], row=2, col=2) 
+
+fig.update_layout(height=600, width=800, title_text="3D Plots") 
+fig.show()

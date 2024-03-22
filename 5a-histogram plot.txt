@@ -1,0 +1,40 @@
+Write a Python program to Demonstrate how to Draw a Histogram Plot using Matplotlib. 
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+data = np.random.randn(1000) 
+
+plt.figure(figsize=(15, 10)) 
+
+plt.subplot(2, 3, 1) 
+plt.hist(data, bins=30, color='skyblue', edgecolor='black') 
+plt.title('Histogram') 
+
+plt.subplot(2, 3, 2) 
+plt.hist(data, bins=30, color='salmon', edgecolor='black', density=True) 
+plt.title('Histogram with Density') 
+
+data2 = np.random.randn(1000) + 2 
+plt.subplot(2, 3, 3) 
+plt.hist([data, data2], bins=30, color=['skyblue', 'lightgreen'], 
+edgecolor='black', label=['Group 1', 'Group 2']) 
+plt.legend() 
+plt.title('Stacked Histogram') 
+
+plt.subplot(2, 3, 4) 
+plt.hist(data, bins=30, cumulative=True, color='orange', 
+edgecolor='black', alpha=0.7) 
+plt.title('Cumulative Histogram') 
+
+plt.subplot(2, 3, 5) 
+plt.hist(data, bins=30, log=True, color='purple', edgecolor='black') 
+plt.title('Log Scale Histogram') 
+
+plt.subplot(2, 3, 6) 
+data3 = np.random.randn(1000) - 2 
+plt.hist([data, data2, data3], bins=30, color=['skyblue', 'lightgreen', 
+'coral'], edgecolor='black', label=['Group 1', 'Group 2', 'Group 3']) 
+plt.legend() 
+plt.title('Multiple Data Sets Histogram') 
+
+plt.tight_layout()

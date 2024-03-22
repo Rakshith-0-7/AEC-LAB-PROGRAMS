@@ -1,0 +1,56 @@
+Write a Python program to Demonstrate how to Draw a Pie Chart using Matplotlib. 
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+labels = ['Category A', 'Category B', 'Category C', 'Category D'] 
+sizes = [30, 20, 25, 25] 
+explode = (0.1, 0, 0, 0)  
+
+plt.figure(figsize=(15, 7)) 
+plt.subplot(2, 3, 1) 
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, 
+colors=['#87CEEB', '#98FB98', '#FA8072', '#FFD700']) 
+plt.title('Pie Chart') 
+
+plt.subplot(2, 3, 2) 
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, 
+explode=explode, colors=['#87CEEB', '#98FB98', '#FA8072', '#FFD700']) 
+plt.title('Exploded Pie Chart') 
+
+plt.subplot(2, 3, 3) 
+donut_sizes = [35, 25, 20, 20] 
+donut_explode = (0.1, 0, 0, 0) 
+plt.pie(donut_sizes, labels=labels, autopct='%1.1f%%', startangle=140, 
+explode=donut_explode, colors=['#87CEEB', '#98FB98', '#FA8072', 
+'#FFD700'], wedgeprops=dict(width=0.3)) 
+plt.title('Donut Chart') 
+
+plt.subplot(2, 3, 4) 
+outer_sizes = [60, 40] 
+inner_sizes = [25, 15, 20, 20] 
+plt.pie(outer_sizes, labels=['Group 1', 'Group 2'], colors=['#F08080', 
+'#ADD8E6'], autopct='%1.1f%%', startangle=90, wedgeprops=dict(width=0.3)) 
+plt.pie(inner_sizes, colors=['#87CEEB', '#98FB98', '#FA8072', '#FFD700'], 
+radius=0.7, autopct='%1.1f%%', startangle=90, wedgeprops=dict(width=0.3)) 
+plt.title('Nested Pie Chart') 
+
+plt.subplot(2, 3, 5, polar=True) 
+angles = np.linspace(0, 2 * np.pi, len(sizes), endpoint=False) 
+colors = ['#87CEEB', '#98FB98', '#FA8072', '#FFD700'] 
+
+for i in range(len(sizes)): 
+
+    next_i = (i + 1) % len(sizes) 
+plt.fill([angles[i], angles[next_i], angles[next_i], angles[i], 
+angles[i]], [0, 0, sizes[i], sizes[i], 0], color=colors[i], alpha=0.7) 
+
+plt.thetagrids(angles * 180/np.pi, labels) 
+plt.title('Polar Pie Chart') 
+
+plt.subplot(2, 3, 6) 
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=45, 
+colors=['#87CEEB', '#98FB98', '#FA8072', '#FFD700']) 
+plt.title('Custom Start Angle Pie Chart') 
+
+plt.tight_layout() 
+plt.show()

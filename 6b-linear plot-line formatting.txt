@@ -1,0 +1,31 @@
+Write a Python program to illustrate linear plotting with line formatting using Matplotlib. 
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+x = np.linspace(0, 10, 100)  
+categories = ['A', 'B', 'C', 'D', 'E'] 
+values = [4, 7, 1, 5, 8] 
+data = np.random.randn(1000) 
+
+fig, axs = plt.subplots(2, 2, figsize=(12, 10)) 
+
+axs[0, 0].plot(x, np.sin(x), label='Sin(x)', color='blue', linestyle='--', 
+linewidth=2, marker='o', markersize=6) 
+axs[0, 0].set_title('Line Plot with Formatting') 
+axs[0, 0].legend() 
+
+axs[0, 1].scatter(x, np.sin(x), label='Sin(x)', color='green', marker='x', 
+s=20) 
+axs[0, 1].set_title('Scatter Plot with Formatting') 
+axs[0, 1].legend() 
+
+axs[1, 0].bar(categories, values, color='orange', edgecolor='black', 
+linewidth=2) 
+axs[1, 0].set_title('Bar Plot with Formatting') 
+
+axs[1, 1].hist(data, bins=30, color='purple', edgecolor='black', 
+linewidth=1.2) 
+axs[1, 1].set_title('Histogram with Formatting') 
+
+plt.tight_layout() 
+plt.show()

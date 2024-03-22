@@ -1,0 +1,12 @@
+def fn(n):
+    if(n<=0):
+        return "n should be greater than 0"
+    elif(n==1):
+        return 0
+    elif(n==2):
+        return 1
+    else:
+        return fn(n-1)+fn(n-2)
+no = int(input("\nenter the no.\n"))
+res = fn(no)
+print(res)

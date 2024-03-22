@@ -1,0 +1,30 @@
+Write a Python program to illustrate Linear Plotting using Matplotlib.  
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+x = np.linspace(0, 10, 100)  
+
+plt.figure(figsize=(10, 5)) 
+plt.subplot(2, 2, 1) 
+plt.plot(x, np.sin(x), label='Sin(x)') 
+plt.title('Line Plot') 
+plt.legend() 
+
+plt.subplot(2, 2, 2) 
+plt.scatter(x, np.sin(x), label='Sin(x)') 
+plt.title('Scatter Plot') 
+plt.legend() 
+
+categories = ['A', 'B', 'C', 'D', 'E'] 
+values = [4, 7, 1, 5, 8] 
+plt.subplot(2, 2, 3) 
+plt.bar(categories, values, color='skyblue') 
+plt.title('Bar Plot') 
+
+data = np.random.randn(1000) 
+plt.subplot(2, 2, 4) 
+plt.hist(data, bins=30, color='orange', edgecolor='black') 
+plt.title('Histogram') 
+
+plt.tight_layout() 
+plt.show()
